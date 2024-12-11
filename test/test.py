@@ -38,8 +38,7 @@ def test_read_alternatives():
 def test_create_answer():
     body = {"user_id": 1, "answers": [{"question_id": 1, "alternative_id": 2}, {
         "question_id": 2, "alternative_id": 2}, {"question_id": 2, "alternative_id": 2}]}
-    body = json.dumps(body)
-    response = client.post('/answer', data=body)
+    response = client.post('/answer', json=body)
     assert response.status_code == 201
 
 
