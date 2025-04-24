@@ -64,16 +64,19 @@ def read_result(user_id: int):
     with open('data/cars.json') as stream:
         cars = json.load(stream)
 
-    for result in results:
-        if result['user_id'] == user_id:
-            for user in users:
-                if user['id'] == result['user_id']:
-                    user_result.append({'user': user})
-                    break
+    for user in users:
+        if user['id'] == user_id:
+            user_result['user'] = user
+            break
+    else:
+        return user_result
 
-        for car_id in result['cars']:
-            for car in cars:
-                if car_id == car['id']:
-                    user_result.append(car)
+    results = filter(lambda x: x['user_id'] == user_id, results)
+    car_ids = []
+
+    for result in results:
+        car_ids.extend(result['cars'])
+
+    user_result['car'] = [car for car in cars if car['id'] in car_ids]
 
     return user_result
