@@ -19,6 +19,15 @@ app.add_middleware(
 def root():
     return {"message": "Fast API in Python Example"}
 
+@app.get("/mongo-test")
+def mongo_test():
+    db = get_db()
+    return {
+        "status": "connected",
+        "collections": db.list_collection_names()
+    }
+
+
 
 @app.get("/user")
 def read_user():
