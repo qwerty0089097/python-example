@@ -11,7 +11,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",                 # local Vite dev
-        "https://your-frontend.onrender.com",    # Render frontend
+        "https://react-tsx-render.onrender.com/",    # Render frontend
     ],
     allow_credentials=True,
     allow_methods=["*"],
