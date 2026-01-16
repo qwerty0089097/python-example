@@ -4,6 +4,7 @@ from starlette.responses import Response
 
 from app.db.models import UserAnswer
 from app.api import api
+from app.db.mongo import get_db
 
 app = FastAPI()
 
