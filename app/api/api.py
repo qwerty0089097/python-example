@@ -1,10 +1,18 @@
 import json
+from app.db.mongo import get_db
 
 
 def read_user():
     with open('data/users.json') as stream:
         users = json.load(stream)
 
+    return users
+
+def read_users():
+    db = get_db()
+    users = list(
+        db.users.find({}, {"_id": 0})  # hide _id for JSON
+    )
     return users
 
 
