@@ -9,7 +9,7 @@ if not MONGO_URI:
 client = MongoClient(MONGO_URI)
 
 # database name from URI or explicit
-db = client.get_database()
+db = client["sample_mflix"]
 
 def get_db():
     return db
