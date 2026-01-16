@@ -5,6 +5,7 @@ from starlette.responses import Response
 from app.db.models import UserAnswer
 from app.api import api
 from app.db.mongo import get_db
+from app.api.api import read_users
 
 app = FastAPI()
 
@@ -19,6 +20,11 @@ app.add_middleware(
 @app.get("/")
 def root():
     return {"message": "Fast API in Python Example"}
+
+
+@app.get("/users")
+def get_users():
+    return read_users()
 
 @app.get("/mongo-test")
 def mongo_test():
